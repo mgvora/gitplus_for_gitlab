@@ -1,0 +1,1 @@
+fvm flutter build appbundle --obfuscate --release --no-tree-shake-icons --split-debug-info=C:\debugsymbols

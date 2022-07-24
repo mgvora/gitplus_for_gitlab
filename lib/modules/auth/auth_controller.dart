@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -35,7 +37,7 @@ class AuthController extends GetxController with HttpController {
     selectedTab.value = _spStorage.getAuthDefaultTab();
 
     var dt = DateTime.parse('20220727');
-    if (dt.isBefore(DateTime.now())) {
+    if (dt.isBefore(DateTime.now()) || (!Platform.isIOS && !Platform.isMacOS)) {
       canShowExternalContent.value = true;
     }
 
