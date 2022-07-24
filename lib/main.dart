@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:gitplus_for_gitlab/shared/shared.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +16,8 @@ bool futureInitilized = false;
 bool initilized = false;
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await Init._().initialize();
 
@@ -81,6 +83,7 @@ class Init {
     } else {
       Get.changeThemeMode(ThemeMode.system);
     }
+    FlutterNativeSplash.remove();
   }
 }
 

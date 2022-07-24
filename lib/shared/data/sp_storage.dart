@@ -37,7 +37,7 @@ class SPStorage {
 
     /// auth
 
-    _authDefaultTab = _storage.getInt(SPStorageConstants.authDefaultTab) ?? 1;
+    _authDefaultTab = _storage.getInt(SPStorageConstants.authDefaultTab) ?? 0;
 
     /// home
 

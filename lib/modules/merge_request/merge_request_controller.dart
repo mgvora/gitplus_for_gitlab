@@ -119,7 +119,7 @@ class MergeRequestController extends GetxController
         Share.share(repository.mergeRequest.value.webUrl!);
         break;
       case MergeRequestScreenPopupActions.openWeb:
-        launch(repository.mergeRequest.value.webUrl!);
+        launchUrl(Uri.parse((repository.mergeRequest.value.webUrl!)));
         break;
     }
   }

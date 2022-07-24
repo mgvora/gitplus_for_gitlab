@@ -161,19 +161,6 @@ class AuthScreenStandard extends GetView<AuthController> {
                           ],
                         ),
                         const SizedBox(height: 5),
-                        if (Platform.isAndroid)
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              OutlinedButton(
-                                onPressed: () {
-                                  _register();
-                                },
-                                child: const Text('Register',
-                                    style: TextStyle(fontSize: 16)),
-                              ),
-                            ],
-                          ),
                       ],
                     )
                   else
@@ -214,32 +201,33 @@ class AuthScreenStandard extends GetView<AuthController> {
                             ),
                           ],
                         ),
-                        if (Platform.isAndroid) const SizedBox(height: 5),
-                        if (Platform.isAndroid)
+                        if (controller.canShowExternalContent.value)
+                          const SizedBox(height: 5),
+                        if (controller.canShowExternalContent.value)
                           OutlinedButton(
                             onPressed: () {
                               var baseUrl = controller.prefix +
                                   "://" +
                                   controller.textcontroller.text;
-                              launch(
-                                  '$baseUrl/-/profile/personal_access_tokens');
+                              launchUrl(Uri.parse(
+                                  '$baseUrl/-/profile/personal_access_tokens'));
                             },
                             child: const Text('Get Access Token',
                                 style: TextStyle(fontSize: 16)),
                           ),
-                        if (Platform.isAndroid)
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              OutlinedButton(
-                                onPressed: () {
-                                  _register();
-                                },
-                                child: const Text('Register',
-                                    style: TextStyle(fontSize: 16)),
-                              ),
-                            ],
-                          ),
+                        // if (Platform.isAndroid)
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     OutlinedButton(
+                        //       onPressed: () {
+                        //         _register();
+                        //       },
+                        //       child: const Text('Register',
+                        //           style: TextStyle(fontSize: 16)),
+                        //     ),
+                        //   ],
+                        // ),
                       ],
                     ),
                 ],
@@ -260,7 +248,7 @@ class AuthScreenStandard extends GetView<AuthController> {
 
   void _register() {
     var baseUrl = controller.prefix + "://" + controller.textcontroller.text;
-    launch('$baseUrl/users/sign_up');
+    launchUrl(Uri.parse(('$baseUrl/users/sign_up')));
   }
 
   IconData platformPopIcon() {

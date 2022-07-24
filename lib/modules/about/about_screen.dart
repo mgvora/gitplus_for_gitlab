@@ -58,7 +58,7 @@ class AboutScreen extends GetView<AboutController> {
           leading: const Icon(Octicons.link_external),
           title: const Text('Visit our web page'),
           onTap: () {
-            launch('https://gitplusapp.com/');
+            launchUrl(Uri.parse('https://gitplusapp.com/'));
           },
         ),
         const Divider(),
@@ -66,7 +66,7 @@ class AboutScreen extends GetView<AboutController> {
           leading: const Icon(Icons.privacy_tip),
           title: const Text('Privacy policy'),
           onTap: () {
-            launch('https://gitplusapp.com/privacy-policy/');
+            launchUrl(Uri.parse(('https://gitplusapp.com/privacy-policy/')));
           },
         ),
         const Divider(),

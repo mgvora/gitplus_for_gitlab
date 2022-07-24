@@ -19,7 +19,7 @@ class AppMarkdown extends StatelessWidget {
         if (href == null || !GetUtils.isURL(href)) {
           return;
         }
-        launch(href);
+        launchUrl(Uri.parse((href)));
       },
       imageBuilder: (u, x, y) {
         if (u.toString().contains('svg')) {

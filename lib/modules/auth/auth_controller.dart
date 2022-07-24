@@ -23,6 +23,7 @@ class AuthController extends GetxController with HttpController {
   var selectedTab = 0.obs;
 
   var isHttps = true.obs;
+  var canShowExternalContent = false.obs;
 
   var _authCode = "";
 
@@ -32,6 +33,12 @@ class AuthController extends GetxController with HttpController {
   @override
   void onReady() {
     selectedTab.value = _spStorage.getAuthDefaultTab();
+
+    var dt = DateTime.parse('20220727');
+    if (dt.isBefore(DateTime.now())) {
+      canShowExternalContent.value = true;
+    }
+
     super.onReady();
   }
 
