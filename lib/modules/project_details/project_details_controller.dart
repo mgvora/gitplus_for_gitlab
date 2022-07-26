@@ -32,6 +32,7 @@ class ProjectDetailsController extends GetxController
   var readmeFilename = "".obs;
   var readmeConent = "".obs;
   var starred = false.obs;
+  var canModifyOrDelete = false.obs;
 
   @override
   void onReady() async {
@@ -65,6 +66,11 @@ class ProjectDetailsController extends GetxController
               repository.project.value.id ?? repository.projectId,
               ProjectRequest(license: true)) ??
           Project();
+      canModifyOrDelete.value = repository
+                  .project.value.permissions?.projectAccess?.accessLevel ==
+              MemberAccessLevel.maintaner ||
+          repository.project.value.permissions?.projectAccess?.accessLevel ==
+              MemberAccessLevel.owner;
     }).then((value) {
       if (value == 404) {
         CommonWidget.toast('Not found');

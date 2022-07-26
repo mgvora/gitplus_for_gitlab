@@ -60,22 +60,24 @@ class ProjectDetailsScreen extends GetView<ProjectDetailsController> {
           PopupMenuButton(
             itemBuilder: (context) =>
                 <PopupMenuEntry<ProjectDetailsScreenPopup>>[
-              PopupMenuItem(
-                  value: ProjectDetailsScreenPopup.edit,
-                  child: Text('Edit'.tr)),
+              if (controller.canModifyOrDelete.value)
+                PopupMenuItem(
+                    value: ProjectDetailsScreenPopup.edit,
+                    child: Text('Edit'.tr)),
               PopupMenuItem(
                   value: ProjectDetailsScreenPopup.share,
                   child: Text('Share'.tr)),
               PopupMenuItem(
                   value: ProjectDetailsScreenPopup.webUrl,
                   child: Text('Open in web browser'.tr)),
-              const PopupMenuDivider(),
-              PopupMenuItem(
-                  value: ProjectDetailsScreenPopup.delete,
-                  child: Text(
-                    'Delete'.tr,
-                    style: const TextStyle(color: Colors.red),
-                  )),
+              if (controller.canModifyOrDelete.value) const PopupMenuDivider(),
+              if (controller.canModifyOrDelete.value)
+                PopupMenuItem(
+                    value: ProjectDetailsScreenPopup.delete,
+                    child: Text(
+                      'Delete'.tr,
+                      style: const TextStyle(color: Colors.red),
+                    )),
             ],
             onSelected: (ProjectDetailsScreenPopup value) =>
                 controller.onPopupSelected(value, context),

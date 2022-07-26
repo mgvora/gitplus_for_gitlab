@@ -1,6 +1,8 @@
 import 'package:gitplus_for_gitlab/models/project_namespace.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import 'models.dart';
+
 part 'project.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -21,6 +23,7 @@ class Project {
   final DateTime? createdAt;
   final DateTime? lastActivityAt;
   final ProjectNamespace? namespace;
+  final ProjectPermissions? permissions;
 
   Project({
     this.id,
@@ -39,6 +42,7 @@ class Project {
     this.createdAt,
     this.lastActivityAt,
     this.namespace,
+    this.permissions,
   });
 
   factory Project.fromJson(Map<String, dynamic> json) =>

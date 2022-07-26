@@ -30,6 +30,10 @@ Project _$ProjectFromJson(Map<String, dynamic> json) => Project(
           ? null
           : ProjectNamespace.fromJson(
               json['namespace'] as Map<String, dynamic>),
+      permissions: json['permissions'] == null
+          ? null
+          : ProjectPermissions.fromJson(
+              json['permissions'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ProjectToJson(Project instance) => <String, dynamic>{
@@ -49,4 +53,5 @@ Map<String, dynamic> _$ProjectToJson(Project instance) => <String, dynamic>{
       'created_at': instance.createdAt?.toIso8601String(),
       'last_activity_at': instance.lastActivityAt?.toIso8601String(),
       'namespace': instance.namespace,
+      'permissions': instance.permissions,
     };

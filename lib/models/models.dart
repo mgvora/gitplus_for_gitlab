@@ -39,6 +39,8 @@ export 'response/access_token_response.dart';
 export 'response/paging_response.dart';
 
 export 'project.dart';
+export 'project_permissions.dart';
+export 'permission_access.dart';
 export 'group.dart';
 export 'project_namespace.dart';
 export 'branch.dart';
