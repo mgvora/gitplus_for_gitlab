@@ -51,4 +51,5 @@ abstract class Routes {
   static const accountDetails = '/account_details';
   static const upgrade = '/upgrade';
   static const testPage = '/test_page';
+  static const editUser = '/edit_user';
 }

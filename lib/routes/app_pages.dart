@@ -51,6 +51,9 @@ import 'package:gitplus_for_gitlab/modules/about/about.dart';
 import 'package:gitplus_for_gitlab/modules/starrers/starrers.dart';
 import 'package:gitplus_for_gitlab/modules/tree_view/tree_view.dart';
 
+import '../modules/edit_user/edit_user_binding.dart';
+import '../modules/edit_user/edit_user_screen.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -243,5 +246,9 @@ class AppPages {
           GetPage(
               name: Routes.accountDetails, page: () => AccountDetailsScreen()),
         ]),
+    GetPage(
+        name: Routes.editUser,
+        page: () => EditUser(),
+        binding: EditUserBinding()),
   ];
 }

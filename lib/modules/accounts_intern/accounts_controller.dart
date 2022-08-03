@@ -59,4 +59,8 @@ class AccountsController extends GetxController {
     repository.account.value =
         AppAccount.fromJson(_storage.getDefaultAccount().toJson());
   }
+
+  onEditUser() async {
+    Get.toNamed(Routes.editUser);
+  }
 }

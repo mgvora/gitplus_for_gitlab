@@ -1,9 +1,20 @@
 import 'dart:async';
-import 'package:mygit/api/api.dart';
-import 'package:mygit/models/models.dart';
-import 'package:mygit/shared/shared.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../../api/api_repository.dart';
+import '../../models/app/app_account.dart';
+import '../../models/project.dart';
+import '../../models/request/projects_request.dart';
+import '../../models/response/paging_response.dart';
+import '../../models/types.dart';
+import '../../shared/data/repository.dart';
+import '../../shared/data/secure_storage.dart';
+import '../../shared/data/sp_storage.dart';
+import '../../shared/http_controller.dart';
+import '../../shared/paging_controller.dart';
 
 class EditUserController extends GetxController
     with HttpController, PagingController {
@@ -30,6 +41,8 @@ class EditUserController extends GetxController
   final _storage = Get.find<SecureStorage>();
   final storage = Get.find<SPStorage>();
 
+  var newNameControler;
+
   var countAcc = 0;
   var countProjects = 0.obs;
   var countPersonProjects = 0.obs;
@@ -38,7 +51,7 @@ class EditUserController extends GetxController
   void onInit() {
     account.value = _storage.getDefaultAccount();
     defaultId.value = _storage.getDefaultAccount().userId!;
-
+    newNameControler = TextEditingController();
     listAllProjects();
     listPersonalProjects();
     super.onInit();
@@ -74,4 +87,5 @@ class EditUserController extends GetxController
   // Future<void> putAvatar() async {
   //
   // }
+
 }

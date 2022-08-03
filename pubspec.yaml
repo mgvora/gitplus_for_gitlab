@@ -38,6 +38,7 @@ dependencies:
   path_provider: ^2.0.11
   package_info_plus: ^1.4.3
   rxdart: ^0.27.5
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_lints: ^2.0.0

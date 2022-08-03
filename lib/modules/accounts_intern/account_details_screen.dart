@@ -85,6 +85,16 @@ class AccountDetailsScreen extends StatelessWidget {
                       backgroundColor: Colors.red,
                       foregroundColor: Colors.white,
                     ),
+                    const VerticalDivider(
+                      width: 10,
+                    ),
+                    if (m.userId == controller.defaultId.value)
+                      XElevatedButton(
+                        child: const Text('Edit'),
+                        onPressed: () {
+                          controller.onEditUser();
+                        },
+                      ),
                   ],
                 ),
               ],
